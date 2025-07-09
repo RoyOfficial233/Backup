@@ -1,13 +1,21 @@
 #!/bin/bash
 #Author: RoyOfficial
+echo "!!该脚本仅供国内用户使用(清华大学镜像源),且仅支持ubuntu 22.04 24.04用户"
+echo "!!This script is only for China ainland users (tuna mirror source) and only supports Ubuntu 22.04 24.04 users"
+echo "是否继续?*(y/N)"
+echo "Do you want to confirm?*(y/N)"
+read confirm
+if [ -z $confirm ] || [ $confirm == "n" ] || [ $confirm == "N" ]; then
+exit 0
+fi
 mkdir -p /www
 cd /www
 unlink /bin/dw8 > /dev/null
 unlink /bin/dw21 > /dev/null
 rm -rf /bin/dw8 > /dev/null
 rm -rf /bin/dw21 > /dev/null
-if cat /etc/os-release | grep Ubuntu > /dev/null;then
-if cat /etc/os-release | grep 22.04 > /dev/null;then
+if cat /etc/os-release | grep Ubuntu > /dev/null; then
+if cat /etc/os-release | grep 22.04 > /dev/null; then
 echo "# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
 deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
@@ -26,7 +34,7 @@ deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restric
 apt update
 apt install wget curl unzip zip lrzsz net-tools -y
 fi
-elif cat /etc/os-release | grep 24.04 > /dev/null;then
+elif cat /etc/os-release | grep 24.04 > /dev/null; then
 echo "# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble main restricted universe multiverse
 deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble main restricted universe multiverse
@@ -44,7 +52,7 @@ deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-proposed main restric
 apt update
 apt install wget curl unzip zip lrzsz net-tools -y
 else
-echo "System Not Support"
+echo "不支持该系统"
 exit 0
 fi
 wget -O /www/dw8.tar.gz https://dragonwell.oss-cn-shanghai.aliyuncs.com/8.25.24/Alibaba_Dragonwell_Extended_8.25.24_x64_linux.tar.gz
