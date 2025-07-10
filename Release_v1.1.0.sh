@@ -1,30 +1,39 @@
 #!/bin/bash
 #Author:RoyOfficial
 set -e
+backup_file() {
+    Path_Count=`expr ${Path_Count} + 1`
+    echo "请输入需要备份的目录/文件"
+    read P${Path_Count}
+    if [ -z $P${Path_Count} ]; then
+    echo "输入格式错误"
+    exit 0
+    fi
+    echo "是否要添加`expr ${Path_Count} + 1`个文件/目录(y/N)"
+    read Path_Add
+    if [ $Path_Add == "y" ] || [ $Path_Add == "Y" ]; then
+    backup_file
+    fi
+}
 if ! command -v zip > /dev/null; then
 echo "请安装zip包!/Please install zip package"
 exit 0
 fi
 if [ -z $BAK_CONFIG_FILE ]; then
-echo "请选择配置文件的存放位置(默认:/root/.roybakconfig)"
+echo "请选择配置文件的存放位置"
 read config_file
 if [ -z $config_file ]; then
-config_file="/root/.roybakconfig"
+echo "输入格式错误"
+exit 0
 fi
 echo "BAK_CONFIG_FILE=${config_file}" >> /etc/profile
-echo "请输入备份文件存放的位置(默认:/root/backups)"
+source /etc/profile
+echo "请输入备份文件存放的位置"
 read Backups
-
+if [ -z $Backups ]; then
+echo "输入格式错误"
+exit 0
 fi
-#Example:
-#Backups="/www/Backups"
-#File="/www/Backups/Full_Backup_`date +%Y%m%d%H%M`.zip"
-#P1="/opt/mcsmanager"
-#P2="/www/survival.server"
-#P3="/root/.ossutilconfig"
-#P4="/www/mod.server"
-#zip -q -r $File $P1 $P2 $P3 $P4 > /dev/null
-#upload() {
-#    ossutil -c /root/.ossutilconfig cp $File "oss://roy-baks/Backups/" -fq > /dev/null
-#}
-#upload
+Path_Count=0
+backup_file
+fi
