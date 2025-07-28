@@ -36,4 +36,5 @@ exit 0
 fi
 Path_Count=0
 backup_file
+echo $
 fi
