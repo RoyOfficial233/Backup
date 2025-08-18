@@ -55,12 +55,12 @@ else
 echo "不支持该系统"
 exit 0
 fi
-wget --progress-bar -O /www/dw8.tar.gz https://dragonwell.oss-cn-shanghai.aliyuncs.com/8.25.24/Alibaba_Dragonwell_Extended_8.25.24_x64_linux.tar.gz
+wget --progress -O /www/dw8.tar.gz https://dragonwell.oss-cn-shanghai.aliyuncs.com/8.25.24/Alibaba_Dragonwell_Extended_8.25.24_x64_linux.tar.gz
 tar zxvf /www/dw8.tar.gz
 mv /www/dragonwell-8* /www/dw8
 ln -s /www/dw8/bin/java /bin/dw8
 chmod 777 /bin/dw8
-wget --progress-bar -O /www/dw21.tar.gz https://dragonwell.oss-cn-shanghai.aliyuncs.com/21.0.7.0.7%2B6/Alibaba_Dragonwell_Extended_21.0.7.0.7.6_x64_linux.tar.gz
+wget --progress -O /www/dw21.tar.gz https://dragonwell.oss-cn-shanghai.aliyuncs.com/21.0.7.0.7%2B6/Alibaba_Dragonwell_Extended_21.0.7.0.7.6_x64_linux.tar.gz
 tar zxvf /www/dw21.tar.gz
 mv /www/dragonwell-21* /www/dw21
 ln -s /www/dw21/bin/java /bin/dw21
