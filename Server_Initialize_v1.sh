@@ -2,8 +2,8 @@
 #Author: RoyOfficial
 echo "!!该脚本仅供国内用户使用(清华大学镜像源),且仅支持ubuntu 22.04 24.04用户"
 echo "!!This script is only for China ainland users (tuna mirror source) and only supports Ubuntu 22.04 24.04 users"
-echo "是否继续?*(y/N)"
-echo "Do you want to confirm?*(y/N)"
+echo "是否继续?(y/N)"
+echo "Do you want to confirm?(y/N)"
 read confirm
 if [ -z $confirm ] || [ $confirm == "n" ] || [ $confirm == "N" ]; then
 exit 0
@@ -65,3 +65,6 @@ tar zxvf /www/dw21.tar.gz
 mv /www/dragonwell-21* /www/dw21
 ln -s /www/dw21/bin/java /bin/dw21
 chmod 777 /bin/dw21
+echo "MCSManager installation will begin in 5 seconds... (Ctrl+C to exit)"
+sleep 5s
+sudo su -c "wget -qO- https://script.mcsmanager.com/setup_cn.sh | bash"
