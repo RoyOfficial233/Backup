@@ -11,12 +11,13 @@ backup_file() {
     fi
     echo "是否要添加`expr ${Path_Count} + 1`个文件/目录(y/N)"
     read Path_Add
-    if [ $Path_Add == "y" ] || [ $Path_Add == "Y" ]; then
+    shopt -s nocasematch
+    if [ $Path_Add == "y" ]; then
     backup_file
     fi
 }
 if ! command -v zip > /dev/null; then
-echo "请安装zip包!/Please install zip package"
+echo "请安装zip与unzip!"
 exit 0
 fi
 if [ -z $BAK_CONFIG_FILE ]; then
@@ -31,7 +32,7 @@ source /etc/profile
 echo "请输入备份文件存放的位置"
 read Backups
 if [ -z $Backups ]; then
-echo "输入格式错误"
+echo "输入错误"
 exit 0
 fi
 Path_Count=0
