@@ -1,5 +1,5 @@
 #!/bin/bash
-#Author:RoyOfficial
+#Author RoyOfficial
 set -e
 #Backups="/www/Backups"
 Backups=
